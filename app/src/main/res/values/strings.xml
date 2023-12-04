@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ExpenseAppdemo</string>
+    <string-array name="expenseType">
+        <item>Select expenseType</item>
+        <item>Tuition</item>
+        <item>Food</item>
+        <item>Other</item>
+    </string-array>
+</resources>
