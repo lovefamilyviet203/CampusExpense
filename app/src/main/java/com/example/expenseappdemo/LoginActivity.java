@@ -9,29 +9,49 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import database.DatabaseHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username;
+    EditText email;
     EditText password;
     Button loginButton;
+    Button signUpButton;
+    DatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        username = findViewById(R.id.emailuser);
-        password = findViewById(R.id.passworduser);
+        dbHelper = new DatabaseHelper(this);
+
+        email = findViewById(R.id.editTextEmail);
+        password = findViewById(R.id.editTextPassword);
         loginButton = findViewById(R.id.button3);
+        signUpButton = findViewById(R.id.Signupbutton);  // Assuming you have a SignUp button
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().equals("user") && password.getText().toString().equals("1234")) {
+                String userEmail = email.getText().toString().trim();
+                String userPassword = password.getText().toString().trim();
+
+                if (dbHelper.checkUserCredentials(userEmail, userPassword)) {
                     Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish();  // Đóng màn hình đăng nhập để ngăn ngừa quay lại
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to SignUpActivity
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
     }
