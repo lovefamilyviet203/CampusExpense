@@ -121,15 +121,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return expenseEntityList;
 
     }
-    public boolean checkUser(String email, String password) {
+    public UserEntity checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {UserEntry.COLUMN_NAME_USERNAME};
         String selection = UserEntry.COLUMN_NAME_EMAIL + " = ?" + " AND " + UserEntry.COLUMN_NAME_PASSWORD + " = ?";
         String[] selectionArgs = {email, password};
         Cursor cursor = db.query(UserEntry.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
-        int count = cursor.getCount();
+
+        UserEntity userEntity = null;
+        if (cursor.moveToFirst()) {
+            int usernameColumnIndex = cursor.getColumnIndex(UserEntry.COLUMN_NAME_USERNAME);
+            if (usernameColumnIndex != -1) {
+                String username = cursor.getString(usernameColumnIndex);
+                userEntity = new UserEntity(username, email, password);
+            }
+        }
+
         cursor.close();
-        return count > 0;
+        return userEntity;
     }
     public boolean checkUserEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -152,17 +161,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return count > 0;
     }
-//    public String getUsername(String email) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String[] columns = {UserEntry.COLUMN_NAME_USERNAME};
-//        String selection = UserEntry.COLUMN_NAME_EMAIL + " = ?";
-//        String[] selectionArgs = {email};
-//        Cursor cursor = db.query(UserEntry.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
-//        String username = null;
-//        if (cursor.moveToFirst()) {
-//            username = cursor.getString(cursor.getColumnIndex(UserEntry.COLUMN_NAME_USERNAME));
-//        }
-//        cursor.close();
-//        return username;
-//    }
+    public String getUsername(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {UserEntry.COLUMN_NAME_USERNAME};
+        String selection = UserEntry.COLUMN_NAME_EMAIL + " = ?";
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query(UserEntry.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+
+        String username = null;
+        if (cursor.moveToFirst()) {
+            username = cursor.getString(cursor.getColumnIndex(UserEntry.COLUMN_NAME_USERNAME));
+        }
+
+        cursor.close();
+        return username;
+    }
 }

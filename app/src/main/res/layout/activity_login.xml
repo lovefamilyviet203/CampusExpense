@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="290dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button3">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
+            android:id="@+id/Resetbutton"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginEnd="8dp"
@@ -106,7 +106,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
+            android:id="@+id/Savebutton"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="8dp"
@@ -124,7 +124,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Are you new user? Register"
         android:textColor="#3b680c"
         android:textSize="16sp"
