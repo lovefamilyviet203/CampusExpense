@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton imageButton = findViewById(R.id.imageButton4);
         // Kiểm tra xem có thông tin người dùng đã được lưu không
         SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
         String userEmail = preferences.getString("userEmail", "");
@@ -27,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Hiển thị tên người dùng
         displayUsername(userEmail, userPassword);
+        ImageButton imageButtonHome = findViewById(R.id.imageButtonHome);
+        imageButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Load lại trang khi ImageButton được nhấn
+                recreate();
+            }
+        });
     }
     private void displayUsername(String userEmail, String userPassword) {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -44,4 +51,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddExpenseActivity.class);
         startActivity(intent);
     }
+    public void onHomeButtonClick(View view) {
+        // Handle the home button click here if needed
+        recreate();
+    }
+
 }

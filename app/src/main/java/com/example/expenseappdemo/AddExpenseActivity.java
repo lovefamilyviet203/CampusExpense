@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -106,5 +107,11 @@ public class AddExpenseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void onHomeButtonClick(View view) {
+        // Quay lại MainActivity khi ImageButton được nhấn
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

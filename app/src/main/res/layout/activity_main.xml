@@ -27,7 +27,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -42,8 +42,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="18dp"
-                        android:src="@drawable/ic_1"
                         android:onClick="onAddExpenseButtonClick"
+                        android:src="@drawable/baseline_add_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
+                    android:text="Add"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
                     android:textSize="14sp"
@@ -64,7 +64,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -72,14 +72,15 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_background">
 
                     <ImageButton
                         android:id="@+id/imageButton5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:src="@drawable/ic_2"
+                        android:layout_margin="18dp"
+                        android:src="@drawable/baseline_attach_money_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
+                    android:text="Expense"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
                     android:textSize="14sp"
@@ -108,14 +109,15 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_background">
 
                     <ImageButton
                         android:id="@+id/imageButton6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:src="@drawable/ic_3"
+                        android:layout_margin="18dp"
+                        android:src="@drawable/baseline_support_agent_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
+                    android:text="Support"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
                     android:textSize="14sp"
@@ -144,14 +146,15 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/bottom_background">
 
                     <ImageButton
                         android:id="@+id/imageButton7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:src="@drawable/ic_4"
+                        android:layout_margin="18dp"
+                        android:src="@drawable/baseline_list_alt_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
+                    android:text="List"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
                     android:textSize="14sp"
@@ -201,18 +204,21 @@
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView11"
+                    <ImageButton
+                        android:id="@+id/imageButtonHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn1" />
-
+                        android:background="@drawable/btn_whitebackground"
+                        app:srcCompat="@drawable/bottom_btn1"
+                        android:layout_centerInParent="true"
+                        android:onClick="onHomeButtonClick" />
                     <TextView
                         android:id="@+id/textView20"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Home"
+                        android:background="@drawable/btn_whitebackground"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
@@ -224,10 +230,11 @@
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView13"
+                    <ImageButton
+                        android:id="@+id/imageButtonProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/btn_whitebackground"
                         app:srcCompat="@drawable/bottom_btn2" />
 
                     <TextView
@@ -235,69 +242,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Profile"
+                        android:background="@drawable/btn_whitebackground"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/imageView14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn5" />
-
-                    <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView15"
+                    <ImageButton
+                        android:id="@+id/imageButtonSetting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn3" />
-
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Support"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:background="@drawable/btn_whitebackground"
                         app:srcCompat="@drawable/bottom_btn4" />
 
                     <TextView
@@ -305,14 +266,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Settings"
+                        android:background="@drawable/btn_whitebackground"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
