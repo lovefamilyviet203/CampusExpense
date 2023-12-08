@@ -3,7 +3,6 @@ package com.example.expenseappdemo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -11,12 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 
@@ -51,45 +46,14 @@ public class AddExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
         EditText editTextExpenseDate = findViewById(R.id.editTextDate);
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String[] options = {"Option1","Option2","Option3"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddExpenseActivity.this);
-                builder.setItems(options,(dialog,item)->{
-                    if(options[item] == "Option1"){
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
-                        Snackbar.make(view, "Option1",Snackbar.LENGTH_LONG).setAction("Action",null).show();
-                    }
-                    else if(options[item] == "Option2"){
-                        Snackbar.make(view, "Option2",Snackbar.LENGTH_LONG).setAction("Action",null).show();
-                    }
-                    else if(options[item] == "Option3"){
-                        Snackbar.make(view, "Option3",Snackbar.LENGTH_LONG).setAction("Action",null).show();
-                        dialog.dismiss();
-                    }
-                });
-                builder.show();
-            }
-        });
-        editTextExpenseDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AddExpenseActivity.DatePickerFragment datePickerFragment = new AddExpenseActivity.DatePickerFragment();
-                datePickerFragment.editText = editTextExpenseDate;
-                datePickerFragment.show(getSupportFragmentManager(),"dataPicker");
-            }
-        });
-        findViewById(R.id.Savebutton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText expenseNameControl = findViewById(R.id.editText);
+                EditText expenseNameControl = findViewById(R.id.editTextExpenseName);
                 String expenseName = expenseNameControl.getText().toString();
-                Spinner expenseTypeControl = findViewById(R.id.spinner);
+                Spinner expenseTypeControl = findViewById(R.id.spinnerCategory);
                 String expenseType = expenseTypeControl.getSelectedItem().toString();
-                EditText expenseAmountControl = findViewById(R.id.editTextText2);
+                EditText expenseAmountControl = findViewById(R.id.editTextAmount);
                 String expenseAmount = expenseAmountControl.getText().toString();
                 EditText expenseDateControl = findViewById(R.id.editTextDate);
                 String expenseDate = expenseDateControl.getText().toString();
@@ -107,10 +71,24 @@ public class AddExpenseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        editTextExpenseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddExpenseActivity.DatePickerFragment datePickerFragment = new AddExpenseActivity.DatePickerFragment();
+                datePickerFragment.editText = editTextExpenseDate;
+                datePickerFragment.show(getSupportFragmentManager(),"dataPicker");
+            }
+        });
+
     }
     public void onHomeButtonClick(View view) {
         // Quay lại MainActivity khi ImageButton được nhấn
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void onViewButtonClick(View view){
+        Intent intent = new Intent(this, ListExpenseActivity.class);
         startActivity(intent);
         finish();
     }
