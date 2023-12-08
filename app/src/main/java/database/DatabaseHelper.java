@@ -80,6 +80,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
+    public void deleteExpense(int id){
+        database.delete(ExpenseEntry.TABLE_NAME,ExpenseEntry._ID + "=?",new String[]{String.valueOf(id)});
+        database.close();
+    }
     public long insertExpense(ExpenseEntity expense){
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
@@ -176,4 +180,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return username;
     }
+    public ExpenseEntity getExpenseById(int expenseId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {ExpenseEntry._ID, ExpenseEntry.COLUMN_NAME_EXPENSENAME, ExpenseEntry.COLUMN_NAME_AMOUNT, ExpenseEntry.COLUMN_NAME_TYPE, ExpenseEntry.COLUMN_NAME_EXPENSEDATE};
+        String selection = ExpenseEntry._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(expenseId)};
+        Cursor cursor = db.query(ExpenseEntry.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+
+        ExpenseEntity expenseEntity = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex(ExpenseEntry._ID));
+            String name = cursor.getString(cursor.getColumnIndex(ExpenseEntry.COLUMN_NAME_EXPENSENAME));
+            String amount = cursor.getString(cursor.getColumnIndex(ExpenseEntry.COLUMN_NAME_AMOUNT));
+            String type = cursor.getString(cursor.getColumnIndex(ExpenseEntry.COLUMN_NAME_TYPE));
+            String date = cursor.getString(cursor.getColumnIndex(ExpenseEntry.COLUMN_NAME_EXPENSEDATE));
+
+            expenseEntity = new ExpenseEntity();
+            expenseEntity.Id = id;
+            expenseEntity.expenseName = name;
+            expenseEntity.amount = amount;
+            expenseEntity.expenseType = type;
+            expenseEntity.expenseDate = date;
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        return expenseEntity;
+    }
+    public void updateExpense(ExpenseEntity expense) {
+        ContentValues values = new ContentValues();
+        values.put(ExpenseEntry.COLUMN_NAME_EXPENSENAME, expense.getExpenseName());
+        values.put(ExpenseEntry.COLUMN_NAME_EXPENSEDATE, expense.getExpenseDate());
+        values.put(ExpenseEntry.COLUMN_NAME_AMOUNT, expense.getAmount());
+        values.put(ExpenseEntry.COLUMN_NAME_TYPE, expense.getExpenseType());
+
+        String selection = ExpenseEntry._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(expense.getId())};
+
+        database.update(ExpenseEntry.TABLE_NAME, values, selection, selectionArgs);
+    }
+
+
 }

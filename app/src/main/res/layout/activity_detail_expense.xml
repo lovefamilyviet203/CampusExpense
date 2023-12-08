@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailExpenseActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButtonBackForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_background"
+                android:padding="2dp"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Detail Expense"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/top_wave2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <TextView
+        android:id="@+id/expenseNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Expense Name"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/expenseNameTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_addbackground"
+        android:ems="10"
+        android:hint="Expense Name"
+        android:padding="8dp"
+        android:textColor="#6D6DBF"
+        android:textColorHint="#8e8e8e"
+        app:layout_constraintStart_toStartOf="@+id/expenseNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/expenseNameTextView" />
+
+    <TextView
+        android:id="@+id/expenseAmountTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="24dp"
+        android:text="Amount"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expenseNameTextView1" />
+
+    <TextView
+        android:id="@+id/expenseAmountTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_addbackground"
+        android:ems="10"
+        android:hint="Expense Amount"
+        android:padding="8dp"
+        android:textColor="#6D6DBF"
+        android:textColorHint="#8e8e8e"
+        app:layout_constraintStart_toStartOf="@+id/expenseAmountTextView1"
+        app:layout_constraintTop_toBottomOf="@+id/expenseAmountTextView1" />
+
+    <TextView
+        android:id="@+id/expenseDateTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="24dp"
+        android:text="Date"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expenseAmountTextView2" />
+
+    <TextView
+        android:id="@+id/expenseDateTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_addbackground"
+        android:ems="10"
+        android:hint="Expense Date"
+        android:padding="8dp"
+        android:textColor="#6D6DBF"
+        android:textColorHint="#8e8e8e"
+        app:layout_constraintStart_toStartOf="@+id/expenseDateTextView1"
+        app:layout_constraintTop_toBottomOf="@+id/expenseDateTextView1" />
+
+    <TextView
+        android:id="@+id/expenseCategoryTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="24dp"
+        android:text="Category"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expenseDateTextView2" />
+
+    <TextView
+        android:id="@+id/expenseCategoryTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_addbackground"
+        android:ems="10"
+        android:hint="Expense Category"
+        android:padding="8dp"
+        android:textColor="#6D6DBF"
+        android:textColorHint="#8e8e8e"
+        app:layout_constraintStart_toStartOf="@+id/expenseCategoryTextView1"
+        app:layout_constraintTop_toBottomOf="@+id/expenseCategoryTextView1" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonUpdate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonUpdate"
+        app:layout_constraintTop_toTopOf="@+id/buttonUpdate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
