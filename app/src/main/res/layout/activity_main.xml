@@ -280,12 +280,11 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/banner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <TextView
             android:id="@+id/textView9"
@@ -323,27 +322,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:drawableEnd="@drawable/search_icon"
-        android:drawablePadding="8dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="4dp"
-        android:textSize="16sp"
-        android:textStyle="italic|bold"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Search For..."
-        android:background="@drawable/search_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
