@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddExpenseActivity.class);
         startActivity(intent);
     }
+    public void onListExpenseActivity(View view) {
+        // Xử lý khi ImageButton được nhấn
+        Intent intent = new Intent(this, ListExpenseActivity.class);
+        startActivity(intent);
+    }
     public void onHomeButtonClick(View view) {
         // Handle the home button click here if needed
         recreate();

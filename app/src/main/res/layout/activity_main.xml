@@ -155,6 +155,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="18dp"
                         android:src="@drawable/baseline_list_alt_24"
+                        android:onClick="onListExpenseActivity"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -413,7 +414,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Detail"
+                    android:text="Account"
                     android:textAlignment="center"
                     android:textColor="#6672FF"
                     android:textStyle="bold|italic" />
