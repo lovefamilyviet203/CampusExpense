@@ -100,6 +100,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = UserEntry.createUserEntry(user.username, user.email, user.password);
         return database.insertOrThrow(UserEntry.TABLE_NAME, null, values);
     }
+    public List<ExpenseEntity> getAllExpenses(String searchQuery) {
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = null;
+        String[] selectionArgs = null;
+
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            selection = ExpenseEntry.COLUMN_NAME_EXPENSENAME + " LIKE ?";
+            selectionArgs = new String[]{"%" + searchQuery + "%"};
+        }
+
+        Cursor results = db.query(
+                ExpenseEntry.TABLE_NAME,
+                new String[]{ExpenseEntry._ID, ExpenseEntry.COLUMN_NAME_EXPENSENAME, ExpenseEntry.COLUMN_NAME_AMOUNT, ExpenseEntry.COLUMN_NAME_TYPE, ExpenseEntry.COLUMN_NAME_EXPENSEDATE},
+                selection,
+                selectionArgs,
+                null,
+                null,
+                ExpenseEntry.COLUMN_NAME_EXPENSEDATE
+        );
+
+        List<ExpenseEntity> expenseEntityList = new ArrayList<>();
+        results.moveToFirst();
+        while (!results.isAfterLast()) {
+            int id = results.getInt(0);
+            String name = results.getString(1);
+            String amount = results.getString(2);
+            String type = results.getString(3);
+            String date = results.getString(4);
+
+            ExpenseEntity expense = new ExpenseEntity();
+            expense.setId(id);
+            expense.setExpenseName(name);
+            expense.setAmount(amount);
+            expense.setExpenseType(type);
+            expense.setExpenseDate(date);
+
+            expenseEntityList.add(expense);
+            results.moveToNext();
+        }
+
+        results.close();
+        db.close();
+        return expenseEntityList;
+    }
     public List<ExpenseEntity> getAllExpenses() {
         Cursor results = database.query(ExpenseEntry.TABLE_NAME, new String[] {ExpenseEntry._ID,ExpenseEntry.COLUMN_NAME_EXPENSENAME,ExpenseEntry.COLUMN_NAME_AMOUNT,ExpenseEntry.COLUMN_NAME_TYPE, ExpenseEntry.COLUMN_NAME_EXPENSEDATE},
                 null, null, null, null, ExpenseEntry.COLUMN_NAME_EXPENSEDATE);

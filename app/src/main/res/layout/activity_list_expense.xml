@@ -46,16 +46,36 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/top_background"/>
-
         </LinearLayout>
     </ScrollView>
+
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/search_edittext"
+        android:drawableEnd="@drawable/search_icon"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="Search For..."
+        android:inputType="text"
+        android:paddingStart="20dp"
+        android:paddingEnd="4dp"
+        android:textSize="16sp"
+        android:textStyle="italic|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/top_wave1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <ListView
         android:id="@+id/listExpense"
@@ -65,6 +85,6 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
