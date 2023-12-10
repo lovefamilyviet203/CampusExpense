@@ -18,6 +18,8 @@ public class DetailExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_expense);
         ImageButton backButtonForm = findViewById(R.id.imageButtonBackForm);
+        ImageButton detailToUpdateButtonForm = findViewById(R.id.imageButtonDetailToUpdate);
+        ImageButton detailToHomeButton = findViewById(R.id.imageButtonDetailToHome);
         int expenseId = getIntent().getIntExtra("expenseId", -1);
 
         if (expenseId != -1) {
@@ -46,10 +48,32 @@ public class DetailExpenseActivity extends AppCompatActivity {
                 onBackListExpense();
             }
         });
+        detailToUpdateButtonForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDetailtoUpdate();
+            }
+        });
+        detailToHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDetailtoHomeButtonClick();
+            }
+        });
 
     }
     public void onBackListExpense(){
         Intent intent = new Intent(this, ListExpenseActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void onDetailtoUpdate(){
+        Intent intent = new Intent(this, UpdateExpenseActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void onDetailtoHomeButtonClick(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
