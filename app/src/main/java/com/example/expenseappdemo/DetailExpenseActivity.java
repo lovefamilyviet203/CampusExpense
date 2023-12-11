@@ -67,10 +67,24 @@ public class DetailExpenseActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public void onDetailtoUpdate(){
-        Intent intent = new Intent(this, UpdateExpenseActivity.class);
-        startActivity(intent);
-        finish();
+    public void onDetailtoUpdate() {
+        int expenseId = getIntent().getIntExtra("expenseId", -1);
+
+        if (expenseId != -1) {
+            // Retrieve the detailed information for the selected expense
+            DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+            ExpenseEntity expense = dbHelper.getExpenseById(expenseId);
+
+            // Pass the expense information to UpdateExpenseActivity
+            Intent intent = new Intent(this, UpdateExpenseActivity.class);
+            intent.putExtra("expenseId", expense.getId());
+            intent.putExtra("expenseName", expense.expenseName);
+            intent.putExtra("amount", expense.amount);
+            intent.putExtra("expenseDate", expense.expenseDate);
+            intent.putExtra("expenseType", expense.expenseType);
+            startActivity(intent);
+            finish();
+        }
     }
     public void onDetailtoHomeButtonClick(){
         Intent intent = new Intent(this, MainActivity.class);
