@@ -77,6 +77,7 @@ public class DetailExpenseActivity extends AppCompatActivity {
 
             // Pass the expense information to UpdateExpenseActivity
             Intent intent = new Intent(this, UpdateExpenseActivity.class);
+            //get ID
             intent.putExtra("expenseId", expense.getId());
             intent.putExtra("expenseName", expense.expenseName);
             intent.putExtra("amount", expense.amount);
