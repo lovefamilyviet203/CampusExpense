@@ -68,6 +68,7 @@ public class DetailExpenseActivity extends AppCompatActivity {
         finish();
     }
     public void onDetailtoUpdate() {
+        // Retrieve the expenseId passed from the previous activity
         int expenseId = getIntent().getIntExtra("expenseId", -1);
 
         if (expenseId != -1) {
@@ -75,9 +76,9 @@ public class DetailExpenseActivity extends AppCompatActivity {
             DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
             ExpenseEntity expense = dbHelper.getExpenseById(expenseId);
 
-            // Pass the expense information to UpdateExpenseActivity
+            // Prepare to pass the expense information to the UpdateExpenseActivity
             Intent intent = new Intent(this, UpdateExpenseActivity.class);
-            //get ID  va
+            // Pass relevant details to the UpdateExpenseActivity using intent extras
             intent.putExtra("expenseId", expense.getId());
             intent.putExtra("expenseName", expense.expenseName);
             intent.putExtra("amount", expense.amount);

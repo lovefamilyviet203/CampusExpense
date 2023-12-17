@@ -64,11 +64,14 @@ public class ListExpenseActivity extends AppCompatActivity {
     }
 
     private void filterList(String query) {
+        // Get a filtered list of ExpenseEntity objects from the database
         List<ExpenseEntity> filteredList = dbHelper.getAllExpenses(query);
+        // Clear the existing data in the adapter
         adapter.clear();
+        // Add the filtered list to the adapter
         adapter.addAll(filteredList);
+        // Notify the adapter that the data set has changed
         adapter.notifyDataSetChanged();
-
         // Show a Snackbar if no matching results are found
         if (filteredList.isEmpty()) {
             showNoResultsSnackbar();

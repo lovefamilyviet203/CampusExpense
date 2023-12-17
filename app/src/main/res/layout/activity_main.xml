@@ -471,7 +471,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Voice Call"
+                    android:text="Other"
                     android:textAlignment="center"
                     android:textColor="#6672FF"
                     android:textStyle="bold|italic" />

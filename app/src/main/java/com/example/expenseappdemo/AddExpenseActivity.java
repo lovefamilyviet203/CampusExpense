@@ -46,36 +46,61 @@ public class AddExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
         EditText editTextExpenseDate = findViewById(R.id.editTextDate);
+        // Set an onClickListener for the button with the id "buttonSave"
         findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Get a reference to the EditText with the id "editTextExpenseName"
                 EditText expenseNameControl = findViewById(R.id.editTextExpenseName);
+                // Retrieve the text entered in the expense name EditText
                 String expenseName = expenseNameControl.getText().toString();
+
+                // Get a reference to the Spinner with the id "spinnerCategory"
                 Spinner expenseTypeControl = findViewById(R.id.spinnerCategory);
+                // Retrieve the selected item text from the expense type Spinner
                 String expenseType = expenseTypeControl.getSelectedItem().toString();
+
+                // Get a reference to the EditText with the id "editTextAmount"
                 EditText expenseAmountControl = findViewById(R.id.editTextAmount);
+                // Retrieve the text entered in the expense amount EditText
                 String expenseAmount = expenseAmountControl.getText().toString();
+
+                // Get a reference to the EditText with the id "editTextDate"
                 EditText expenseDateControl = findViewById(R.id.editTextDate);
+                // Retrieve the text entered in the expense date EditText
                 String expenseDate = expenseDateControl.getText().toString();
 
+                // Create an ExpenseEntity object and set its properties
                 ExpenseEntity expense = new ExpenseEntity();
                 expense.expenseName = expenseName;
                 expense.amount = expenseAmount;
                 expense.expenseType = expenseType;
                 expense.expenseDate = expenseDate;
+
+                // Create a DatabaseHelper instance
                 DatabaseHelper dbHelper = new DatabaseHelper(getApplication());
+                // Insert the expense into the database and get the generated ID
                 long id = dbHelper.insertExpense(expense);
+
+                // Display the generated ID as a Toast message
                 Toast.makeText(getApplication(), String.valueOf(id), Toast.LENGTH_LONG).show();
 
+                // Create an intent to start the ListExpenseActivity
                 Intent intent = new Intent(getApplicationContext(), ListExpenseActivity.class);
+                // Start the ListExpenseActivity
                 startActivity(intent);
             }
         });
+
+        // Set an onClickListener for the EditText with the id "editTextExpenseDate"
         editTextExpenseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Create an instance of the DatePickerFragment
                 AddExpenseActivity.DatePickerFragment datePickerFragment = new AddExpenseActivity.DatePickerFragment();
+                // Set the associated EditText for the selected date
                 datePickerFragment.editText = editTextExpenseDate;
+                // Show the DatePickerFragment using the FragmentManager
                 datePickerFragment.show(getSupportFragmentManager(),"dataPicker");
             }
         });

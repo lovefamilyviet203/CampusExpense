@@ -34,13 +34,18 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Get the user's email and password from the corresponding EditText fields, trimming any leading or trailing whitespaces
                 String userEmail = email.getText().toString().trim();
                 String userPassword = password.getText().toString().trim();
+                // Save the user's email and password to SharedPreferences (assuming this method is implemented elsewhere)
                 saveUserToSharedPreferences(userEmail, userPassword);
+                // Check user credentials using the DatabaseHelper instance (dbHelper)
                 if (dbHelper.checkUserCredentials(userEmail, userPassword)) {
+                    // If credentials are valid, display a success message and navigate to the MainActivity
                     Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    // Finish the LoginActivity to prevent going back to it from the MainActivity
                     finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
@@ -57,8 +62,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void saveUserToSharedPreferences(String userEmail, String userPassword) {
+        // Get a reference to the SharedPreferences instance named "user_data" with private access
         SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        // Get an editor to modify the SharedPreferences data
         SharedPreferences.Editor editor = preferences.edit();
+        // Put the user's email and password into SharedPreferences
         editor.putString("userEmail", userEmail);
         editor.putString("userPassword", userPassword);
         editor.apply();
