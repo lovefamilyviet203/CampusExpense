@@ -46,10 +46,11 @@ public class ListExpenseActivity extends AppCompatActivity {
         });
 
         searchEditText.addTextChangedListener(new TextWatcher() {
+            // Not performing any actions before text changes
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
+            // Not performing any actions when text changes
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }

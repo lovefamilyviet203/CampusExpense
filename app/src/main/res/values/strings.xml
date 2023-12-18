@@ -4,6 +4,7 @@
         <item>Select expenseType</item>
         <item>Tuition</item>
         <item>Food</item>
+        <item>Travel</item>
         <item>Other</item>
     </string-array>
 </resources>
