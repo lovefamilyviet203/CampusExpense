@@ -266,7 +266,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_whitebackground"
-                        app:srcCompat="@drawable/bottom_btn4" />
+                        app:srcCompat="@drawable/bottom_btn4"
+                        android:onClick="homeOnSetting"/>
 
                     <TextView
                         android:id="@+id/textView11"

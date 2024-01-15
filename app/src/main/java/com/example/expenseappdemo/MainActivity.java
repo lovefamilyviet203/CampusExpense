@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListExpenseActivity.class);
         startActivity(intent);
     }
+    public void homeOnSetting(View view){
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+    }
     public void onHomeButtonClick(View view) {
         // Handle the home button click here if needed
         recreate();
