@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
+    public void homeOnProfile(View view){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
     public void onHomeButtonClick(View view) {
         // Handle the home button click here if needed
         recreate();

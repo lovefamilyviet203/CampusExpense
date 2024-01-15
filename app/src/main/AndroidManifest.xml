@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ExpenseAppdemo"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
